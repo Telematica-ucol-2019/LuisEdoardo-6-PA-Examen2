@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Banca6892.Models6892
+{
+    public class Transaccion6892
+    {
+        public string Monto { get; set; }
+        public string FechaT { get; set; }
+        public string Hora { get; set; }
+    }
+}

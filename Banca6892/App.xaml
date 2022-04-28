@@ -3,6 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Banca6892.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Style x:Key="stackLayoutStyle" TargetType="StackLayout">
+                <Setter Property="Orientation"     Value = "Vertical"   />
+                <Setter Property="WidthRequest"    Value = "150"        />
+                <Setter Property="BackgroundColor" Value = "#BBD8EB"    />
+                <Setter Property="Padding"         Value = "40,60,10,10"/>
+            </Style>
+        </ResourceDictionary>
+        
+        <ResourceDictionary>
+            <Color x:Key="Primary">#484559</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="PapayaWhip" />
+                <Setter Property="BarTextColor" Value="Black" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

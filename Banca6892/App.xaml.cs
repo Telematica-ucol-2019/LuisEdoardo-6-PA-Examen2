@@ -11,7 +11,7 @@ namespace Banca6892
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Principal6892());
+            MainPage = new NavigationPage(new CuentaDetalles());
         }
 
         protected override void OnStart()

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Banca6892.ViewModel6892
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel6892 : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

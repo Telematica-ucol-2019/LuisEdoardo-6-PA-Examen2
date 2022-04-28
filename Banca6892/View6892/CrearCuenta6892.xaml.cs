@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Banca6892.ViewModel6892;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,12 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace Banca6892.View6892
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Principal6892 : ContentPage
+    public partial class CrearCuenta6892 : ContentPage
     {
-        public Principal6892()
+        public CrearCuenta6892()
         {
             InitializeComponent();
-            BindingContext = new CuentaViewModel6892();
         }
     }
 }

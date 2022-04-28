@@ -1,12 +1,86 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="false"
              x:Class="Banca6892.View6892.Principal6892">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+
+        <ScrollView>
+            <StackLayout BackgroundColor="#fbfaff">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="400"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="https://caricom.org/wp-content/uploads/Floyd-Morris-Remake-1024x879-1.jpg" VerticalOptions="Start" Aspect="AspectFill" Margin="0,-45,0,0"/>
+                    <Label Grid.Row="0" VerticalOptions="End" Padding="20,20,20,50">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Marie Brown &#10;" FontSize="25" FontAttributes="Bold" ForegroundColor="Black" />
+                                <Span Text="ID 1234567" FontSize="17" ForegroundColor="Black" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid>
+
+                <Frame CornerRadius="50" Margin="0,-50,0,0" BackgroundColor="#fbfaff" HasShadow="False" HeightRequest="19"/>
+                
+                <Grid Margin="30,-20,30,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="210"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Label Grid.Row="0" Grid.Column="0" Text="Saldo disponible" TextColor="Silver"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="$ 6,750.00" FontAttributes="Bold" FontSize="30"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="..." HorizontalOptions="End" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="CUENTAS" TextColor="Silver" Margin="0,20,0,0"/>
+                    <CollectionView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"              
+                             ItemsSource="{Binding cuentas}"
+                             VerticalOptions="Start"  
+                             ItemsLayout="HorizontalList">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout WidthRequest="320">
+                                    <Image Source="https://thumbs.dreamstime.com/b/blank-credit-card-isolated-blank-credit-card-isolated-white-background-d-render-173867598.jpg" Margin="0,0,15,0"/>
+
+                                    <Grid Margin="25,-150,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding NombreC}" TextColor="Black" FontAttributes="Bold" FontSize="18"/>
+                                        <Label Grid.Row="1" Grid.Column="0" Text="****" TextColor="Black" FontAttributes="Bold" FontSize="30" />
+                                        <Label Grid.Row="1" Grid.Column="1" Text="****" TextColor="Black" FontAttributes="Bold" FontSize="30" />
+                                        <Label Grid.Row="1" Grid.Column="2" Text="****" TextColor="Black" FontAttributes="Bold" FontSize="30" />
+                                        <Label Grid.Row="1" Grid.Column="3" Text="{Binding Numero}" TextColor="Black" FontAttributes="Bold" FontSize="20" />
+                                        <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Tipo}" TextColor="Black" FontAttributes="Bold" FontSize="20" />
+                                        <Image Grid.Row="2" Grid.Column="2" Source="{Binding Tipo}" />
+                                        <Label Grid.Row="2" Grid.Column="3" Text="{Binding Fecha}" TextColor="Black" FontAttributes="Bold" FontSize="20"/>
+                                    </Grid>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
