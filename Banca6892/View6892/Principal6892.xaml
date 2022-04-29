@@ -51,13 +51,18 @@
                                             </Label.FormattedText>
                                         </Label>
                                         <BoxView Grid.Row="3" BackgroundColor="Black" HeightRequest="1" Grid.ColumnSpan="3"/>
-                                        <StackLayout Grid.Row="0" Grid.RowSpan="4">
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding BindingContext.cuentaDetalle, Source={x:Reference thisPrincipal}}"
+                                            <StackLayout Grid.Row="0" Grid.RowSpan="4">
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding BindingContext.cuentaDetalle, Source={x:Reference thisPrincipal}}"
                                                                   CommandParameter="{Binding .}"/>
-                                            </StackLayout.GestureRecognizers>
-                                        </StackLayout>
-                                    </Grid>
+                                                </StackLayout.GestureRecognizers>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="2" HorizontalOptions="End">
+                                                <Button BackgroundColor="White" BorderColor="Crimson" BorderWidth="2" CornerRadius="30" Text="❌"
+                                                        Command="{Binding BindingContext.btBorrarCuenta, Source={x:Reference thisPrincipal}}"
+                                                        CommandParameter="{Binding .}"></Button>
+                                            </StackLayout>
+                                        </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
@@ -68,7 +73,8 @@
             <Frame  VerticalOptions="EndAndExpand" BackgroundColor="PapayaWhip">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                     <Button BackgroundColor="White" Text="Crear Cuenta" FontSize="Medium" CornerRadius="20" BorderColor="Black" BorderWidth="1"
-                                Command="{Binding BindingContext.btCuentaNueva, Source={x:Reference thisPrincipal}}"></Button>
+                                Command="{Binding BindingContext.btCuentaNueva, Source={x:Reference thisPrincipal}}"
+                                CommandParameter="{Binding .}"></Button>
                     <Button BackgroundColor="White" Text="Editar" FontSize="Medium" CornerRadius="20" BorderColor="Black" BorderWidth="1"></Button>
                 </StackLayout>
             </Frame>

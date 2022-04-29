@@ -1,57 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Banca6892.Models6892"
              Title="Detalles de Cuentas"
+             x:Name="thisCuentaDetalles"
              x:Class="Banca6892.View6892.CuentaDetalles">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout VerticalOptions="FillAndExpand">
-            <CollectionView ItemsSource="{Binding cuentas}" VerticalOptions="FillAndExpand">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout VerticalOptions="FillAndExpand">
-                                <Frame BackgroundColor="White">
-                                    <StackLayout>
-                                    <Label FontSize="25" FontAttributes="Bold" HorizontalTextAlignment="Start">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding NombreC}"/>
-                                                <Span Text="&#10;"/>
-                                                <Span Text="**** "/>
-                                                <Span Text="**** "/>
-                                                <Span Text="**** "/>
-                                                <Span Text="{Binding Numero}"/>
-                                                <Span Text="&#10;"/>
-                                                <Span Text="{Binding Tipo}"/>
-                                                <Span Text="  "/>
-                                                <Span Text="{Binding Fecha}"/>
-                                                <Span Text="    $"/>
-                                                <Span Text="{Binding Saldo}" TextColor="SpringGreen"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                        <Button HorizontalOptions="EndAndExpand" BorderColor="Crimson" BackgroundColor="White" BorderWidth="2" CornerRadius="20" Text="❌"></Button>
-                                    </StackLayout>
-                                </Frame>
-                            </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            </StackLayout>
-        
-        <Grid RowSpacing="0" ColumnSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="60"/>
-            </Grid.RowDefinitions>
-            <ScrollView Grid.Row="2" BackgroundColor="PapayaWhip">
-                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                    <Button Text="Añadir" BackgroundColor="White" FontSize="Medium" CornerRadius="10"></Button>
-                    <Button Text="Transferir" BackgroundColor="White" FontSize="Medium" CornerRadius="10"></Button>
+            <ScrollView BindingContext="{Binding BindingContext.Cuenta, Source={x:Reference thisCuentaDetalles}}">
+                <StackLayout BackgroundColor="AliceBlue" VerticalOptions="FillAndExpand" >
+                    <CollectionView ItemsSource="{Binding Transactions}" >
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Transaccion6892">
+                                <Grid RowDefinitions="auto,auto,auto,auto"  BackgroundColor="#A3CEF1" ColumnDefinitions="320">
+                                    <Label Grid.Row="0" Text="{Binding Monto}"/>
+                                    <Label Grid.Row="1" Text="{Binding FechaT}"/>
+                                    <Label Grid.Row="2" Text="{Binding Hora}" FontSize="Micro" TextColor="Gray"/>
+                                    <BoxView Grid.Row="3" BackgroundColor="Black" HeightRequest="1" Grid.ColumnSpan="3"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </StackLayout>
             </ScrollView>
-        </Grid>
+            <Button Command="{Binding BindingContext.cmdDeposit, Source={x:Reference thisCuentaDetalles}}" Text="Deposit"></Button>
+            <Button Command="{Binding BindingContext.cmdWithdrawal, Source={x:Reference thisCuentaDetalles}}" Text="Withdrawal"></Button>
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -20,6 +20,8 @@ namespace Banca6892.ViewModel6892
         public ICommand btCuentaNueva { get; set; }
         public ICommand cuentaDetalle { get; set; }
         public ICommand btAñadirCuenta { get; set; }
+        public ICommand btBorrarCuenta { get; set; }
+        
 
         private Cuenta6892 cuenta;
         public Cuenta6892 Cuenta
@@ -36,13 +38,13 @@ namespace Banca6892.ViewModel6892
             apellidoM = usuario.ApellidoMaterno;
             telefono = usuario.Telefonos;
             CuentasL = new ObservableCollection<Cuenta6892>();
-            usuario.cuentas = new ObservableCollection<Cuenta6892>() { new Cuenta6892() { NombreC = "Debito", Numero = new Random().Next(1000, 9999), Saldo = new Random().Next(1000, 4000), Transaccion = new ObservableCollection<Transaccion6892>() } };
+            usuario.cuentas = new ObservableCollection<Cuenta6892>() { new Cuenta6892() { NombreC = "Debito", Numero = new Random().Next(1000, 9999), Saldo = 0, Transaccion = new ObservableCollection<Transaccion6892>() } };
             CuentasL = usuario.cuentas;
 
             btCuentaNueva = new Command(async () => await PCbtCommand());
             cuentaDetalle = new Command<Cuenta6892>(async (x) => await PCcuentaDetalle(x));
             btAñadirCuenta = new Command<Cuenta6892>(async (x) => await PCañadirCuenta(x));
-
+            btBorrarCuenta = new Command<Cuenta6892>(async (x) => await PCBorrarCuenta(x));
 
             async Task PCbtCommand()
             {
@@ -62,10 +64,23 @@ namespace Banca6892.ViewModel6892
                 await Application.Current.MainPage.Navigation.PopAsync();
             }
 
+            async Task PCBorrarCuenta(Cuenta6892 _Cuenta)
+            {
+                if (_Cuenta.Saldo == 0)
+                {
+                    usuario.cuentas.Remove(_Cuenta);
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Saldo aun disponible", "No puede borrar la cuenta si aún cuenta con saldo", "Continuar");
+                }
+            }
+
             async Task PCcuentaDetalle(Models6892.Cuenta6892 _Cuenta)
             {
                 await Application.Current.MainPage.Navigation.PushAsync(new View6892.CuentaDetalles(_Cuenta, this));
             }
+
         }
         #region Attributes
         private string nombre;
