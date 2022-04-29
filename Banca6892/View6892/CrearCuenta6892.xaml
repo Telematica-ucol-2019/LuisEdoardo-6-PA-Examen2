@@ -1,12 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="thisCrearCuenta"
+             NavigationPage.HasNavigationBar="false"
              x:Class="Banca6892.View6892.CrearCuenta6892">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid BackgroundColor="WhiteSmoke" RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0" BackgroundColor="PapayaWhip" Orientation="Horizontal">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+                    <Label FontSize="25" FontAttributes="Bold" HorizontalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Nueva Cuenta" TextColor="Black"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </ScrollView>
+            <ScrollView Grid.Row="1" BackgroundColor="WhiteSmoke">
+                <Grid VerticalOptions="Start">
+                    <Frame BackgroundColor="WhiteSmoke">
+                        <StackLayout BindingContext="{Binding BindingContext.Cuenta, Source={x:Reference thisCrearCuenta}}">
+                            <Image Source="https://cdn3.iconfinder.com/data/icons/cash-card-starters-glyph/48/Sed-08-512.png"></Image>
+                            <Entry
+                                x:Name="NombreTarjeta"
+                                Text="{Binding NombreC, Mode=TwoWay}"
+                                Placeholder="Nombre de tarjeta"/>
+                            <Button Text="Crear" BackgroundColor="PapayaWhip" TextColor="Black" CornerRadius="10" 
+                                    Command="{Binding BindingContext.btAñadirCuenta, Source={x:Reference thisCrearCuenta}}"
+                                    CommandParameter="{Binding BindingContext.Cuenta, Source={x:Reference thisCrearCuenta}}"></Button>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

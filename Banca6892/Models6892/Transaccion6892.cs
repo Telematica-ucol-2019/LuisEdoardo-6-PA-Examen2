@@ -6,7 +6,7 @@ namespace Banca6892.Models6892
 {
     public class Transaccion6892
     {
-        public string Monto { get; set; }
+        public int Monto { get; set; }
         public string FechaT { get; set; }
         public string Hora { get; set; }
     }

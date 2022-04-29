@@ -1,5 +1,4 @@
 ﻿using Banca6892.ViewModel6892;
-using Banca6892.Models6892;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace Banca6892.View6892
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CuentaDetalles : ContentPage
+    public partial class EditarUsuario6892 : ContentPage
     {
-        public CuentaDetalles(Models6892.Cuenta6892 cuenta, UsuarioViewModel6892 vm)
+        public EditarUsuario6892()
         {
             InitializeComponent();
-            vm.Cuenta = new Models6892.Cuenta6892();
-            vm.Cuenta = cuenta;
-            this.BindingContext = vm;
+            BindingContext = new RegistroViewModel6892();
         }
     }
 }

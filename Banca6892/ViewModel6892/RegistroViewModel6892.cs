@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
+using System.Text.RegularExpressions;
+using Xamarin.Forms;
 
 namespace Banca6892.ViewModel6892
 {
@@ -14,6 +17,7 @@ namespace Banca6892.ViewModel6892
         private string apellidoP;
         private string apellidoM;
         private string telefono;
+
 
         #endregion
         #region Properties
@@ -45,7 +49,7 @@ namespace Banca6892.ViewModel6892
         {
             get
             {
-                return new RelayCommand(checkValidations);
+                return new RelayCommand(BtVal);
             }
             set { }
         }
@@ -53,16 +57,95 @@ namespace Banca6892.ViewModel6892
         {
             get
             {
-                return new RelayCommand(checkValidations);
+                return new RelayCommand(NombreVal);
             }
             set { }
         }
+
+        public ICommand InpApellido
+        {
+            get
+            {
+                return new RelayCommand(ApellidoVal);
+            }
+            set { }
+        }
+
+        public ICommand InpTelefono
+        {
+            get
+            {
+                return new RelayCommand(TelefonoVal);
+            }
+            set { }
+        }
+
+
+
+
         #endregion
         #region Methods
-        private void checkValidations()
+        private void NombreVal()
         {
-            Console.WriteLine("FAK");
+            if (NombreText.Length > 0)
+            {
+                string caracteres = NombreText[NombreText.Length - 1].ToString();
+                if (!Regex.IsMatch(caracteres, @"^[a-zA-Z]+$"))
+                {
+                    NombreText = NombreText.Substring(0, NombreText.Length - 1);
+                }
+            }
         }
+
+        private void ApellidoVal()
+        {
+            if (ApellidoPText.Length > 0) {
+                string caracteres = ApellidoPText[ApellidoPText.Length - 1].ToString();
+                if (!Regex.IsMatch(caracteres, @"^[a-zA-Z]+$"))
+                {
+                    ApellidoPText = ApellidoPText.Substring(0, ApellidoPText.Length - 1);
+                }
+            }
+        }
+
+        private void TelefonoVal()
+        {
+            if (TelefonoNumb.Length > 0)
+            {
+                string caracteres = TelefonoNumb[TelefonoNumb.Length - 1].ToString();
+                if (!Regex.IsMatch(caracteres, @"^[0-9]*$"))
+                {
+                    TelefonoNumb = TelefonoNumb.Substring(0, TelefonoNumb.Length - 1);
+                }
+            }
+            else
+            {
+                TelefonoNumb = TelefonoNumb.Substring(0, 10);
+            }
+        }
+
+        async private void BtVal()
+        {
+            if(NombreText?.Length > 0 && ApellidoPText?.Length > 0 && ApellidoMText?.Length > 0 && TelefonoNumb?.Length > 0)
+            {
+                Usuario6892 usuario = new Usuario6892()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Nombre = NombreText,
+                    ApellidoPaterno = ApellidoPText,
+                    ApellidoMaterno = ApellidoMText,
+                    Telefonos = TelefonoNumb
+                };
+                await Application.Current.MainPage.DisplayAlert("Registro Exitoso!", "Gracias!", "Continuar");
+                Application.Current.MainPage = new NavigationPage(new View6892.Principal6892(usuario));
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Favor de llenar el formulario", "Informacion Incorrecta", "Ok");
+            }
+        }
+
+
         #endregion
         #region Constructor
 

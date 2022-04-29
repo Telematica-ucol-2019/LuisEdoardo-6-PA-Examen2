@@ -14,7 +14,7 @@ namespace Banca6892.Models6892
         public string Tipo { get; set; }
         public string Fecha { get; set; }
 
-        public ObservableCollection<Transaccion6892> transaccion {get; set;}
+        public ObservableCollection<Transaccion6892> Transaccion {get; set;}
 
     }
 }

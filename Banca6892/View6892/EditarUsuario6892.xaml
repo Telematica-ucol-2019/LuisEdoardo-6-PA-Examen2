@@ -6,7 +6,7 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"             
              NavigationPage.HasNavigationBar="false"
              x:DataType="vm:RegistroViewModel6892"
-             x:Class="Banca6892.View6892.Registro6892">
+             x:Class="Banca6892.View6892.EditarUsuario6892">
     <ContentPage.Content>
         <Grid BackgroundColor="WhiteSmoke" RowSpacing="0" ColumnSpacing="0">
             <Grid.RowDefinitions>
@@ -18,7 +18,7 @@
                     <Label FontSize="25" FontAttributes="Bold" HorizontalTextAlignment="Center">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Registro" TextColor="Black"/>
+                                <Span Text="Usuario" TextColor="Black"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -45,36 +45,19 @@
                                 x:Name="ApellidoP"
                                 Text="{Binding ApellidoPText, Mode=TwoWay}"
                                 Placeholder="Apellido Paterno"
-                            >
-                                <Entry.Behaviors>
-                                    <xct:EventToCommandBehavior
-                                        EventName="TextChanged"
-                                        Command="{Binding InpApellido}"></xct:EventToCommandBehavior>
-                                </Entry.Behaviors>
-                            </Entry>
+                            />
                             <Entry
                                 x:Name="ApellidoM"
                                 Text="{Binding ApellidoMText, Mode=TwoWay}"
                                 Placeholder="Apellido Materno"
-                            >
-                                <Entry.Behaviors>
-                                    <xct:EventToCommandBehavior
-                                        EventName="TextChanged"
-                                        Command="{Binding InpApellido}"></xct:EventToCommandBehavior>
-                                </Entry.Behaviors>
-                            </Entry>
+                            />
                             <Entry
                                 x:Name="Telefono"
                                 Text="{Binding TelefonoNumb, Mode=TwoWay}"
                                 Placeholder="Telefono"
                                 Keyboard="Numeric">
-                                <Entry.Behaviors>
-                                    <xct:EventToCommandBehavior
-                                        EventName="TextChanged"
-                                        Command="{Binding InpTelefono}"></xct:EventToCommandBehavior>
-                                </Entry.Behaviors>
                             </Entry>
-                            <Button Text="Registrarse" BackgroundColor="PapayaWhip" TextColor="Black" CornerRadius="10" Command="{Binding btRegistrar}"></Button>
+                            <Button Text="Guardar" BackgroundColor="PapayaWhip" TextColor="Black" CornerRadius="10" Command="{Binding btRegistrar}"></Button>
                         </StackLayout>
                     </Frame>
                 </Grid>

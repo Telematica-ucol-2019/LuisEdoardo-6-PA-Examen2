@@ -3,10 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Banca6892.View6892.Transferencia6892">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid BackgroundColor="WhiteSmoke" RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0" BackgroundColor="PapayaWhip" Orientation="Horizontal">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+                    <Label FontSize="25" FontAttributes="Bold" HorizontalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Nueva Cuenta" TextColor="Black"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </ScrollView>
+            <ScrollView Grid.Row="1" BackgroundColor="WhiteSmoke">
+                <Grid VerticalOptions="Start">
+                    <Frame BackgroundColor="WhiteSmoke">
+                        <StackLayout>
+                            <Entry
+                                x:Name="NombreTarjeta"
+                                Text="{Binding NombreC, Mode=TwoWay}"
+                                Placeholder="Nombre de tarjeta"/>
+                            <Entry
+                                x:Name="Tipo"
+                                Text="{Binding Tipo, Mode=TwoWay}"
+                                Placeholder="Tipo"
+                            />
+                            <Entry
+                                x:Name="FechaExpiración"
+                                Text="{Binding Fecha, Mode=TwoWay}"
+                                Placeholder="Fecha de expiración"
+                            />
+                            <Button Text="Crear" BackgroundColor="PapayaWhip" TextColor="Black" CornerRadius="10" Command="{Binding btCrear}"></Button>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
