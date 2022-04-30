@@ -62,11 +62,19 @@ namespace Banca6892.ViewModel6892
             set { }
         }
 
-        public ICommand InpApellido
+        public ICommand InpApellidoP
         {
             get
             {
-                return new RelayCommand(ApellidoVal);
+                return new RelayCommand(ApellidoPVal);
+            }
+            set { }
+        }
+        public ICommand InpApellidoM
+        {
+            get
+            {
+                return new RelayCommand(ApellidoPVal);
             }
             set { }
         }
@@ -90,18 +98,30 @@ namespace Banca6892.ViewModel6892
             if (NombreText.Length > 0)
             {
                 string caracteres = NombreText[NombreText.Length - 1].ToString();
-                if (!Regex.IsMatch(caracteres, @"^[a-zA-Z]+$"))
+                if (!Regex.IsMatch(caracteres, @"^[a-zA-Z' ']+$"))
                 {
                     NombreText = NombreText.Substring(0, NombreText.Length - 1);
                 }
             }
         }
 
-        private void ApellidoVal()
+        private void ApellidoPVal()
         {
             if (ApellidoPText.Length > 0) {
                 string caracteres = ApellidoPText[ApellidoPText.Length - 1].ToString();
-                if (!Regex.IsMatch(caracteres, @"^[a-zA-Z]+$"))
+                if (!Regex.IsMatch(caracteres, @"^[a-zA-Z' ']+$"))
+                {
+                    ApellidoPText = ApellidoPText.Substring(0, ApellidoPText.Length - 1);
+                }
+            }
+        }
+
+        private void ApellidoMVal()
+        {
+            if (ApellidoPText.Length > 0)
+            {
+                string caracteres = ApellidoPText[ApellidoPText.Length - 1].ToString();
+                if (!Regex.IsMatch(caracteres, @"^[a-zA-Z' ']+$"))
                 {
                     ApellidoPText = ApellidoPText.Substring(0, ApellidoPText.Length - 1);
                 }
@@ -112,15 +132,18 @@ namespace Banca6892.ViewModel6892
         {
             if (TelefonoNumb.Length > 0)
             {
-                string caracteres = TelefonoNumb[TelefonoNumb.Length - 1].ToString();
-                if (!Regex.IsMatch(caracteres, @"^[0-9]*$"))
+                if (TelefonoNumb.Length <= 10)
                 {
-                    TelefonoNumb = TelefonoNumb.Substring(0, TelefonoNumb.Length - 1);
+                    string caracteres = TelefonoNumb[TelefonoNumb.Length - 1].ToString();
+                    if (!Regex.IsMatch(caracteres, @"^[0-9]*$"))
+                    {
+                        TelefonoNumb = TelefonoNumb.Substring(0, TelefonoNumb.Length - 1);
+                    }
                 }
-            }
-            else
-            {
-                TelefonoNumb = TelefonoNumb.Substring(0, 10);
+                else
+                {
+                    TelefonoNumb = TelefonoNumb.Substring(0, 10);
+                }
             }
         }
 

@@ -2,31 +2,64 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:Banca6892.Models6892"
-             Title="Detalles de Cuentas"
+             Title="Transacciones"
              x:Name="thisCuentaDetalles"
              x:Class="Banca6892.View6892.CuentaDetalles">
     <ContentPage.Content>
         <StackLayout>
             <ScrollView BindingContext="{Binding BindingContext.Cuenta, Source={x:Reference thisCuentaDetalles}}">
-                <StackLayout BackgroundColor="AliceBlue" VerticalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding Transactions}" >
+                <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand">
+                    <CollectionView ItemsSource="{Binding Transaccion}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="model:Transaccion6892">
-                                <Grid RowDefinitions="auto,auto,auto,auto"  BackgroundColor="#A3CEF1" ColumnDefinitions="320">
-                                    <Label Grid.Row="0" Text="{Binding Monto}"/>
-                                    <Label Grid.Row="1" Text="{Binding FechaT}"/>
-                                    <Label Grid.Row="2" Text="{Binding Hora}" FontSize="Micro" TextColor="Gray"/>
-                                    <BoxView Grid.Row="3" BackgroundColor="Black" HeightRequest="1" Grid.ColumnSpan="3"/>
+                                <Grid RowDefinitions="auto,auto,auto,auto" BackgroundColor="PapayaWhip" ColumnDefinitions="320">
+                                    <Label Grid.Row="0" FontSize="Medium">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Monto:  $ "></Span>
+                                                <Span Text="{Binding Monto}"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="1" FontSize="Medium">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Fecha:  "></Span>
+                                                <Span Text="{Binding FechaT}"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="2"  FontSize="Medium">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Hora:  "></Span>
+                                                <Span Text="{Binding Hora}"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="3"  FontSize="Medium">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Tipo:  "></Span>
+                                                <Span Text="{Binding TipoT}"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <BoxView Grid.Row="4" BackgroundColor="Black" HeightRequest="1" Grid.ColumnSpan="3"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </StackLayout>
             </ScrollView>
-            <Button Command="{Binding BindingContext.cmdDeposit, Source={x:Reference thisCuentaDetalles}}" Text="Deposit"></Button>
-            <Button Command="{Binding BindingContext.cmdWithdrawal, Source={x:Reference thisCuentaDetalles}}" Text="Withdrawal"></Button>
-
-
+            <StackLayout>
+                <Frame VerticalOptions="EndAndExpand" BackgroundColor="PapayaWhip">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Button Command="{Binding BindingContext.btDepositar, Source={x:Reference thisCuentaDetalles}}" Text="Depositar" BackgroundColor="White" BorderColor="Black" BorderWidth="1" CornerRadius="30"/>
+                        <Button Command="{Binding BindingContext.btRetirar, Source={x:Reference thisCuentaDetalles}}" Text="Retirar" BackgroundColor="White" BorderColor="Black" BorderWidth="1" CornerRadius="30"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

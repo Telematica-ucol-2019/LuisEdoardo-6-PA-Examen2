@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:Banca6892.ViewModel6892"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"             
              NavigationPage.HasNavigationBar="false"
-             x:DataType="vm:RegistroViewModel6892"
+             x:DataType="vm:UsuarioViewModel6892"
              x:Class="Banca6892.View6892.EditarUsuario6892">
     <ContentPage.Content>
         <Grid BackgroundColor="WhiteSmoke" RowSpacing="0" ColumnSpacing="0">
@@ -31,33 +31,33 @@
                             <Image Source="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"/>
                             <Entry
                                 x:Name="Nombre"
-                                Text="{Binding NombreText, Mode=TwoWay}"
+                                Text="{Binding NombreUser, Mode=TwoWay}"
                                 Placeholder="Nombre"
                                 
                              >
                                 <Entry.Behaviors>
                                     <xct:EventToCommandBehavior
                                         EventName="TextChanged"
-                                        Command="{Binding InpNombre}"></xct:EventToCommandBehavior>
+                                        Command="{Binding nombreUserV}"></xct:EventToCommandBehavior>
                                 </Entry.Behaviors>
                             </Entry>
                             <Entry
                                 x:Name="ApellidoP"
-                                Text="{Binding ApellidoPText, Mode=TwoWay}"
+                                Text="{Binding ApellidoPUser, Mode=TwoWay}"
                                 Placeholder="Apellido Paterno"
                             />
                             <Entry
                                 x:Name="ApellidoM"
-                                Text="{Binding ApellidoMText, Mode=TwoWay}"
+                                Text="{Binding ApellidoMUser, Mode=TwoWay}"
                                 Placeholder="Apellido Materno"
                             />
                             <Entry
                                 x:Name="Telefono"
-                                Text="{Binding TelefonoNumb, Mode=TwoWay}"
+                                Text="{Binding TelefonoUser, Mode=TwoWay}"
                                 Placeholder="Telefono"
                                 Keyboard="Numeric">
                             </Entry>
-                            <Button Text="Guardar" BackgroundColor="PapayaWhip" TextColor="Black" CornerRadius="10" Command="{Binding btRegistrar}"></Button>
+                            <Button Text="Guardar" BackgroundColor="PapayaWhip" TextColor="Black" CornerRadius="10" Command="{Binding btGuardar}"></Button>
                         </StackLayout>
                     </Frame>
                 </Grid>

@@ -9,23 +9,23 @@
         <StackLayout>
             <ScrollView>
             <StackLayout BackgroundColor="White">
-                <Grid>
+                <Grid BackgroundColor="PapayaWhip">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="400"/>
                     </Grid.RowDefinitions>
-                    <Image Grid.Row="0" Source="https://caricom.org/wp-content/uploads/Floyd-Morris-Remake-1024x879-1.jpg" VerticalOptions="Start" Aspect="AspectFill" Margin="0,-45,0,0"/>
+                        <Image  Source="https://comofuncionaque.com/wp-content/uploads/2015/05/La-persona-es-un-ser-capaz-de-pensar-razonar-tener-sentimientos-y-emociones.jpg.jpg" VerticalOptions="Start" Aspect="AspectFill" Margin="0,0,0,-45"/>
                     <Label Grid.Row="0" VerticalOptions="End" Padding="20,20,20,50">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{Binding inNombre}" FontSize="25" FontAttributes="Bold" ForegroundColor="Black" />
                                 <Span Text="&#10;"/>
-                                <Span Text="ID 2538262" FontSize="17" ForegroundColor="Black" />
+                                <Span Text="ID 2538262" FontSize="20" ForegroundColor="Black" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
                 </Grid>
-                <Label Text="Cuentas" FontSize="Medium"></Label>
-                <ScrollView>
+                <Label Text="Cuentas" FontSize="Medium" ></Label>
+                <ScrollView >
                     <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand">
                         <CollectionView ItemsSource="{Binding BindingContext.CuentasL, Source={x:Reference thisPrincipal}}" >
                             <CollectionView.ItemTemplate>
@@ -75,7 +75,6 @@
                     <Button BackgroundColor="White" Text="Crear Cuenta" FontSize="Medium" CornerRadius="20" BorderColor="Black" BorderWidth="1"
                                 Command="{Binding BindingContext.btCuentaNueva, Source={x:Reference thisPrincipal}}"
                                 CommandParameter="{Binding .}"></Button>
-                    <Button BackgroundColor="White" Text="Editar" FontSize="Medium" CornerRadius="20" BorderColor="Black" BorderWidth="1"></Button>
                 </StackLayout>
             </Frame>
         </StackLayout>

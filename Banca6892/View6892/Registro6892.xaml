@@ -49,7 +49,7 @@
                                 <Entry.Behaviors>
                                     <xct:EventToCommandBehavior
                                         EventName="TextChanged"
-                                        Command="{Binding InpApellido}"></xct:EventToCommandBehavior>
+                                        Command="{Binding InpApellidoP}"></xct:EventToCommandBehavior>
                                 </Entry.Behaviors>
                             </Entry>
                             <Entry
@@ -60,7 +60,7 @@
                                 <Entry.Behaviors>
                                     <xct:EventToCommandBehavior
                                         EventName="TextChanged"
-                                        Command="{Binding InpApellido}"></xct:EventToCommandBehavior>
+                                        Command="{Binding InpApellidoM}"></xct:EventToCommandBehavior>
                                 </Entry.Behaviors>
                             </Entry>
                             <Entry
